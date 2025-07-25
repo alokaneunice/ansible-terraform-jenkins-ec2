@@ -1,2 +1,30 @@
 # ansible-terraform-jenkins-ec2
-This project is about automating the deployment of a Jenkins server on AWS EC2 instances using Terraform and Ansible.
+This project is about automating the deployment of a Jenkins server on AWS EC2 instances using Terraform and Ansible.Here's a summary of its key components:
+
+### Project Overview
+
+1. *Infrastructure Provisioning*:
+   - *Terraform* is used to create and manage AWS resources, specifically:
+     - A Virtual Private Cloud (VPC).
+     - Subnets for network segmentation.
+     - EC2 instances—one designated as the Ansible controller and another as a remote server.
+
+2. *Configuration Management*:
+   - *Ansible* is employed to automate the installation and configuration of Jenkins on the remote server. This includes:
+     - Installing Java (a prerequisite for Jenkins).
+     - Adding the Jenkins repository and installing the Jenkins package.
+     - Starting the Jenkins service and ensuring it runs on boot.
+     - Checking the availability of Jenkins and retrieving the initial admin password.
+
+3. *Continuous Integration/Continuous Deployment (CI/CD)*:
+   - The goal is to set up a Jenkins server that can be used for CI/CD pipelines, allowing teams to automate the build, test, and deployment processes for their applications.
+
+### Benefits of the Project
+
+- *Automation*: Reduces manual setup time and human error by automating infrastructure provisioning and application deployment.
+- *Scalability*: Easily scale the infrastructure up or down as needed by modifying Terraform configurations.
+- *Consistency*: Ensures consistent environments across different deployments through version-controlled infrastructure and configuration.
+
+### Target Audience
+
+This project is useful for developers, DevOps engineers, and teams looking to leverage Jenkins for CI/CD processes in a cloud environment while practicing Infrastructure as Code (IaC) principles.

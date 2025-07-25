@@ -1,0 +1,46 @@
+---
+- name: Install Jenkins on Remote Server
+  hosts: remote_servers
+  become: yes  # Use 'become' to run tasks with sudo privileges
+  tasks:
+    - name: Install Java
+      yum:
+        name: java-1.8.0-openjdk
+        state: present
+
+    - name: Add Jenkins repository
+      yum_repository:
+        name: jenkins
+        description: Jenkins
+        baseurl: https://pkg.jenkins.io/redhat-stable/latest/
+        gpgcheck: yes
+        gpgkey: https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+        enabled: yes
+
+    - name: Install Jenkins
+      yum:
+        name: jenkins
+        state: present
+
+    - name: Start Jenkins service
+      service:
+        name: jenkins
+        state: started
+        enabled: yes
+
+    - name: Wait for Jenkins to be available
+      uri:
+        url: http://localhost:8080
+        method: GET
+        return_content: yes
+      register: result
+      until: result.status == 200
+      retries: 5
+      delay: 10
+
+    - name: Output Jenkins initial admin password
+      command: cat /var/lib/jenkins/secrets/initialAdminPassword
+      register: jenkins_admin_password
+
+    - debug:
+        msg: "Jenkins initial admin password is: {{ jenkins_admin_password.stdout }}"
