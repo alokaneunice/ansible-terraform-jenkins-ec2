@@ -29,12 +29,12 @@ jobs:
       - name: 'Plan Terraform'
         run: terraform plan -no-color
 
-      - name: Terraform Apply
-        id: apply 
-        if: ${{ github.event.inputs.terraform_action == 'apply' }}
-        run: terraform apply
+     # - name: Terraform Apply
+     #   id: apply 
+      #  if: ${{ github.event.inputs.terraform_action == 'apply' }}
+      #  run: terraform apply
       
       - name: Terraform destroy
         id: destroy 
-        if: ${{ github.event.inputs.terraform_action == 'destroy' }}
+        #if: ${{ github.event.inputs.terraform_action == 'destroy' }}
         run: terraform destroy -auto-approve
