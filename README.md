@@ -28,3 +28,7 @@ This project is about automating the deployment of a Jenkins server on AWS EC2 i
 ### Target Audience
 
 This project is useful for developers, DevOps engineers, and teams looking to leverage Jenkins for CI/CD processes in a cloud environment while practicing Infrastructure as Code (IaC) principles.
+
+### Diagram Illustration
+
+<img width="1732" height="815" alt="Image" src="https://github.com/user-attachments/assets/fff57555-fc39-4d4f-8b3f-e655a7c589e7" />
