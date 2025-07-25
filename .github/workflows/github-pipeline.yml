@@ -20,23 +20,15 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.awsregion }}
 
-      - name: Initialize Terraform
-        run: |
-          cd terraform
-          terraform init
+      - name: 'Terraform Init'
+        run: terraform init
 
-      - name: Plan Terraform
-        run: |
-          cd terraform
-          terraform plan
+      - name: 'Plan Terraform'
+        run: terraform plan -no-color
 
-      - name: Apply Terraform
-        run: |
-          cd terraform
-          terraform apply -auto-approve
-
+      - name: 'Apply Terraform'
+        run: terraform apply -auto-approve
+          
       - name: Clean up Terraform
         if: github.event.action == 'destroy'
-        run: |
-          cd terraform
-          terraform destroy -auto-approve
+        run: terraform destroy -auto-approve
