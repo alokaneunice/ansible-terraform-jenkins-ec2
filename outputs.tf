@@ -1,14 +1,7 @@
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "4.0.0"
-    }
-  }
-
-  #required_version = "~> 1.1.5"
+output "ansible_controller_ip" {
+  value = aws_instance.ansible_controller.public_ip
 }
 
-provider "aws" {
-  region = var.region
+output "remote_server_ip" {
+  value = aws_instance.remote_server.public_ip
 }
