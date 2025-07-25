@@ -30,8 +30,9 @@ jobs:
         run: terraform plan -no-color
 
       - name: 'Apply Terraform'
+        if: github.event.action =='apply'
         run: terraform apply -auto-approve
           
-      - name: Clean up Terraform
+      - name: 'Clean up Terraform'
         if: github.event.action == 'destroy'
         run: terraform destroy -auto-approve
