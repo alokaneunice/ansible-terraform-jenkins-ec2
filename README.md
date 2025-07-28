@@ -1,5 +1,5 @@
 # ansible-terraform-jenkins-ec2
-This project is about automating the deployment of a Jenkins server on AWS EC2 instances using Terraform and Ansible.Here's a summary of its key components:
+This project is about automating the provisioning of two EC2 instances using Terraform, orchestrated by GitHub Actions pipeline.Here's a summary of its key components:
 
 ### Project Overview
 
@@ -32,3 +32,7 @@ This project is useful for developers, DevOps engineers, and teams looking to le
 ### Diagram Illustration
 
 <img width="1732" height="815" alt="Image" src="https://github.com/user-attachments/assets/fff57555-fc39-4d4f-8b3f-e655a7c589e7" />
+
+### Architecture diagram
+
+![Image](https://github.com/user-attachments/assets/4cd74847-467d-4d51-b35c-30b4aafbd821)

@@ -4,11 +4,11 @@ resource "aws_instance" "ansible-controller" {
   ami                         = var.ami
   instance_type               = var.instance_type
   key_name                    = var.key_name
-  subnet_id                   = aws_subnet.myapp-subnet.id
+  subnet_id                   = aws_subnet.pub_sub_1.id
   vpc_security_group_ids      = [aws_default_security_group.default-sg.id]
   availability_zone           = var.avail_zone
   associate_public_ip_address = true
-  user_data                   = file("install-jenkins.yml")
+  user_data                   = file("ansible.sh")
   tags = {
     Name = "${var.env_prefix}-ansible-controller"
   }
@@ -20,11 +20,10 @@ resource "aws_instance" "remote-server" {
   ami                         = var.ami
   instance_type               = var.instance_type
   key_name                    = var.key_name
-  subnet_id                   = aws_subnet.myapp-subnet.id
+  subnet_id                   = aws_subnet.pub_sub_2.id
   vpc_security_group_ids      = [aws_default_security_group.default-sg.id]
   availability_zone           = var.avail_zone
   associate_public_ip_address = true
-  user_data                   = file("install-jenkins.yml")
   tags = {
     Name = "${var.env_prefix}-remote-server"
   }
