@@ -5,7 +5,7 @@ resource "aws_instance" "ansible-controller" {
   instance_type               = var.instance_type
   key_name                    = var.key_name
   subnet_id                   = aws_subnet.pub_sub_1.id
-  vpc_security_group_ids      = [aws_default_security_group.default-sg.id]
+  vpc_security_group_ids      = [aws_security_group.alb_sg.id]
   availability_zone           = var.avail_zone
   associate_public_ip_address = true
   user_data                   = file("ansible.sh")
@@ -21,7 +21,7 @@ resource "aws_instance" "remote-server" {
   instance_type               = var.instance_type
   key_name                    = var.key_name
   subnet_id                   = aws_subnet.pub_sub_2.id
-  vpc_security_group_ids      = [aws_default_security_group.default-sg.id]
+  vpc_security_group_ids      = [aws_security_group.alb_sg.id]
   availability_zone           = var.avail_zone
   associate_public_ip_address = true
   tags = {
